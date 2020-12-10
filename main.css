@@ -1,0 +1,154 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: arial;
+}
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: #ddd;
+	overflow: hidden;
+}
+.logo {
+	width: 200px;
+	height: 80px;
+	background-size: cover;
+	display: flex;
+	position: relative;
+}
+.logo img {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.logo::after {
+	content: "Weather";
+	position: absolute;
+	bottom: 0;
+	transform: translate(-50%, 100%);
+	left: 50%;
+}
+.today-panel {
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	width: 500px;
+	height: 400px;
+	background: #ddd;
+	box-shadow: 5px 5px 3px #00000070,
+				-5px -5px 3px #ffffff70;
+	border-radius: 15px;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 30px 36px;
+	position: relative;
+}
+.today-panel .temp {
+	position: absolute;
+	top: 15px;
+}
+.today-panel h1.title {
+	position: relative;
+	bottom: 40px;
+}
+.today-panel div {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	text-align: center;
+}
+.today-panel div > img {
+	flex: 1;
+	margin-right: 20px;
+	border-radius: 5%;
+}
+.today-panel div > div {
+	flex: 2;
+}
+.today-panel h4.desc {
+	position: absolute;
+	bottom: 15px;
+}
+
+
+
+
+.panels {
+	display: flex;
+	width: max-content;
+	justify-content: space-around;
+	align-items: center;
+	animation: panels 30s 5s linear alternate infinite;
+}
+.panels .panel {
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+	background: #ddd;
+	box-shadow: 3px 3px 3px #00000070,
+				-3px -3px 3px #ffffff;
+	border-radius: 15px;
+	padding: 12px 8px;
+	margin: 0 30px 50px 50px;
+}
+
+
+
+@keyframes panels {
+	from {
+		transform: translateX(0%);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+
+
+@media (max-width: 560px) {
+	.today-panel {
+		width: 100%;
+		box-shadow: none;
+		flex-direction: column;
+		align-items: center;
+	}
+	.today-panel > div {
+		flex-direction: column;
+		align-items: center;
+	}
+	.today-panel > div img {
+		width: 150px;
+		margin: 12px 0;
+	}
+	.today-panel h1.title {
+		position: static;
+	}
+	.today-panel h4 {
+		position: static;
+	}
+}
+
+@media (max-height: 720px) {
+	.logo img {
+		display: none;
+	}
+	.logo::after {
+		display: none;
+	}
+	.panels {
+		margin-top: 100px;
+		display: grid;
+		place-items: center;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));		width: 100%;
+		width: 100%;
+		animation: none;
+	}
+	body {
+		overflow: scroll;
+	}
+}
